@@ -744,3 +744,53 @@ a^*=x-b^*
 %!%
 	`)
 }
+
+func TestSuperscript(t *testing.T) {
+	t.Parallel()
+
+	files := `
+-- config.toml --
+[markup.goldmark.extensions]
+supersub = true
+-- content/p1.md --
+---
+title: "p1"
+---
+## Superscript test
+
+A superscript expression: x^n^
+
+-- layouts/_default/single.html --
+{{ .Content }}
+`
+
+	b := hugolib.Test(t, files)
+	b.AssertFileContent("public/p1/index.html", `
+		x<sup>n</sup>
+	`)
+}
+
+func TestSubscript(t *testing.T) {
+	t.Parallel()
+
+	files := `
+-- config.toml --
+[markup.goldmark.extensions]
+supersub = true
+-- content/p1.md --
+---
+title: "p1"
+---
+## Subscript test
+
+A subscript expression: H~2~O
+
+-- layouts/_default/single.html --
+{{ .Content }}
+`
+
+	b := hugolib.Test(t, files)
+	b.AssertFileContent("public/p1/index.html", `
+		H<sub>2</sub>O
+	`)
+}
