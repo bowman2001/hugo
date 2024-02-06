@@ -17,6 +17,7 @@ package goldmark
 import (
 	"bytes"
 
+	supersub "github.com/bowman2001/goldmark-supersubscript"
 	"github.com/gohugoio/hugo-goldmark-extensions/passthrough"
 	"github.com/gohugoio/hugo/markup/goldmark/hugocontext"
 	"github.com/yuin/goldmark/util"
@@ -192,6 +193,10 @@ func newMarkdown(pcfg converter.ProviderConfig) goldmark.Markdown {
 				BlockDelimiters:  blockDelimiters,
 			},
 		))
+	}
+
+	if cfg.Extensions.SuperSub {
+		extensions = append(extensions, supersub.Superscript, supersub.Subscript)
 	}
 
 	if pcfg.Conf.EnableEmoji() {
