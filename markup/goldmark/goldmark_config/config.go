@@ -56,6 +56,7 @@ var Default = Config{
 				Block:  [][]string{},
 			},
 		},
+		SuperSub: false,
 	},
 	Renderer: Renderer{
 		Unsafe: false,
@@ -113,6 +114,7 @@ type Extensions struct {
 	Footnote       bool
 	DefinitionList bool
 	Passthrough    Passthrough
+	SuperSub       bool
 
 	// GitHub flavored markdown
 	Table           bool
