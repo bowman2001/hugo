@@ -56,7 +56,18 @@ var Default = Config{
 				Block:  [][]string{},
 			},
 		},
-		SuperSub: false,
+		Superscript: Superscript{
+			Enable: false,
+		},
+		Subscript: Subscript{
+			Enable: false,
+		},
+		Insert: Insert{
+			Enable: false,
+		},
+		Mark: Mark{
+			Enable: false,
+		},
 	},
 	Renderer: Renderer{
 		Unsafe: false,
@@ -114,7 +125,10 @@ type Extensions struct {
 	Footnote       bool
 	DefinitionList bool
 	Passthrough    Passthrough
-	SuperSub       bool
+	Superscript    Superscript
+	Subscript      Subscript
+	Insert         Insert
+	Mark           Mark
 
 	// GitHub flavored markdown
 	Table           bool
@@ -172,6 +186,26 @@ type DelimitersConfig struct {
 
 	// The delimiters to use for block passthroughs. Same format as Inline.
 	Block [][]string
+}
+
+type Superscript struct {
+	// Whether to enable superscript support.
+	Enable bool
+}
+
+type Subscript struct {
+	// Whether to enable subscript support.
+	Enable bool
+}
+
+type Insert struct {
+	// Whether to enable insert support.
+	Enable bool
+}
+
+type Mark struct {
+	// Whether to enable mark support.
+	Enable bool
 }
 
 type CJK struct {

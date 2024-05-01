@@ -21,7 +21,7 @@ require (
 	github.com/bep/overlayfs v0.9.2
 	github.com/bep/simplecobra v0.4.0
 	github.com/bep/tmc v0.5.1
-	github.com/bowman2001/goldmark-supersubscript v0.0.0-20240131100145-a88cc807138d
+	github.com/bowman2001/hugo-goldmark-extensions/extras v0.0.0-20240501174120-7e4b1c52b9f6
 	github.com/clbanning/mxj/v2 v2.7.0
 	github.com/cli/safeexec v1.0.1
 	github.com/disintegration/gift v1.2.1

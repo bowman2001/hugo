@@ -16,8 +16,8 @@ package goldmark
 
 import (
 	"bytes"
-
-	supersub "github.com/bowman2001/goldmark-supersubscript"
+	"github.com/bowman2001/hugo-goldmark-extensions/extras"
+	xast "github.com/bowman2001/hugo-goldmark-extensions/extras/ast"
 	"github.com/gohugoio/hugo-goldmark-extensions/passthrough"
 	"github.com/gohugoio/hugo/markup/goldmark/hugocontext"
 	"github.com/yuin/goldmark/util"
@@ -195,8 +195,20 @@ func newMarkdown(pcfg converter.ProviderConfig) goldmark.Markdown {
 		))
 	}
 
-	if cfg.Extensions.SuperSub {
-		extensions = append(extensions, supersub.Superscript, supersub.Subscript)
+	if cfg.Extensions.Superscript.Enable {
+		extensions = append(extensions, extras.New(extras.Config{InlineTagType: xast.Superscript}))
+	}
+
+	if cfg.Extensions.Subscript.Enable {
+		extensions = append(extensions, extras.New(extras.Config{InlineTagType: xast.Subscript}))
+	}
+
+	if cfg.Extensions.Insert.Enable {
+		extensions = append(extensions, extras.New(extras.Config{InlineTagType: xast.Insert}))
+	}
+
+	if cfg.Extensions.Mark.Enable {
+		extensions = append(extensions, extras.New(extras.Config{InlineTagType: xast.Mark}))
 	}
 
 	if pcfg.Conf.EnableEmoji() {
